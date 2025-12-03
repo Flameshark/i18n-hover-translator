@@ -1,0 +1,139 @@
+{
+  "name": "i18n-hover-translator",
+  "displayName": "i18n Hover Translator",
+  "description": "鼠标悬停显示多语言key对应的翻译文本",
+  "version": "1.0.0",
+  "publisher": "flameshark",
+  "icon": "icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flameshark/i18n-hover-translator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flameshark/i18n-hover-translator/issues"
+  },
+  "homepage": "https://github.com/flameshark/i18n-hover-translator#readme",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "translation",
+    "hover",
+    "tooltip",
+    "multi-language",
+    "localization",
+    "游戏开发"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:csharp",
+    "onLanguage:java",
+    "onLanguage:python"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "i18n Hover Translator",
+      "properties": {
+        "i18nHover.translationFilePath": {
+          "type": "string",
+          "default": "",
+          "description": "翻译文件的路径（格式：key=value，每行一个）。\n如果未配置，程序会自动搜索以下默认路径：\n  ① 工作区根目录/translations.txt\n  ② 工作区根目录/Library/EditorPerssitent/Locale/translation.txt"
+        },
+        "i18nHover.keyPattern": {
+          "type": "string",
+          "default": "^[a-zA-Z0-9_][a-zA-Z0-9_.-]*$",
+          "description": "主要的匹配翻译key的正则表达式（不包括引号）。默认支持字母、数字、下划线、横线、点号。可以数字开头"
+        },
+        "i18nHover.additionalPatterns": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "额外的匹配规则列表，例如: [\"^i18n\\\\..+\", \"^msg_.*\"]"
+        },
+        "i18nHover.functionPatterns": {
+          "type": "array",
+          "default": [
+            "Language\\.GetContent\\s*\\([^\"']*$",
+            "Language\\.Get\\s*\\([^\"']*$",
+            "GameUtil\\.ShowTips\\s*\\([^\"']*$",
+            "Localization\\.Get\\s*\\([^\"']*$",
+            "I18n\\.Translate\\s*\\([^\"']*$",
+            "i18n\\.get\\s*\\([^\"']*$",
+            "i18n\\.t\\s*\\([^\"']*$",
+            "translate\\s*\\([^\"']*$",
+            "t\\s*\\([^\"']*$",
+            "getString\\s*\\([^)]*,\\s*$",
+            "NSLocalizedString\\s*\\([^\"']*$",
+            "UIManager\\.SetText\\s*\\([^\"']*$",
+            "TipsManager\\.Show\\s*\\([^\"']*$",
+            "UIManager\\.ShowMessage\\s*\\([^\"']*$",
+            "NotificationSystem\\.Push\\s*\\([^\"']*$"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "只有在这些函数调用中的字符串才会被识别为翻译key（正则表达式列表）。支持三元表达式、多参数等复杂场景"
+        },
+        "i18nHover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用/禁用翻译提示"
+        },
+        "i18nHover.maxReverseResults": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 20,
+          "description": "中文反向查找时显示的最大结果数量（1-20）"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "i18nHover.reloadTranslations",
+        "title": "重新加载翻译文件"
+      },
+      {
+        "command": "i18nHover.toggleForceMode",
+        "title": "切换强制查找模式"
+      },
+      {
+        "command": "i18nHover.replaceWithKey",
+        "title": "替换为翻译Key"
+      },
+      {
+        "command": "i18nHover.showOutput",
+        "title": "显示日志输出"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "i18nHover.toggleForceMode",
+        "key": "ctrl+shift+h",
+        "mac": "cmd+shift+h",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "14.x",
+    "eslint": "^7.32.0"
+  }
+}
+

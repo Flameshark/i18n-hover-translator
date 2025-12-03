@@ -1,0 +1,178 @@
+# 多语言翻译文件
+# 格式: KEY=翻译文本
+# 支持注释（以 # 或 // 开头）
+
+# 游戏UI相关（小写+下划线+数字格式）
+ui_lordequip_007=领主装备-007
+ui_main_menu=主菜单
+ui_battle_start=开始战斗
+ui_shop_buy=购买
+ui_inventory_full=背包已满
+
+# 游戏提示（gp_开头）
+gp_price_get_fail=获取价格失败
+gp_network_error=网络连接失败
+gp_item_bought=物品购买成功
+gp_level_up=等级提升
+gp_mission_complete=任务完成
+
+# 通知消息（notice_开头）
+notice_9=通知消息：参数 {0}
+
+# 横线分隔格式（新支持）
+btn-ok=确定（横线格式）
+error-network=网络错误（横线格式）
+user-profile=用户资料
+
+# 点号分隔格式（新支持）
+ui.main.menu=主菜单（点号格式）
+message.success=操作成功（点号格式）
+error.network.timeout=网络超时
+
+# 混合格式（新支持）
+app_config.server-url=服务器地址
+
+# ========== 真实游戏翻译数据 ==========
+# 纯数字key（常见于游戏）
+100020=金币
+100022=战力
+100148=您的钻石不足。
+101154=确定
+102119=搜索
+102535=攻击
+107298=采集
+
+# 数字+下划线格式
+1013_default_key=输入广播内容…
+4_king_cross_server=联赛进程
+4_king_cross_server_title=四国联赛
+4_king_cross_server_desc=四个王国进行排名争夺！
+
+# 字母开头的key
+account_bind_tips1=该账号或邮箱，已经绑定其他游戏角色，绑定失败！
+account_bind_tips16=脸书
+acatar_check_big_pic=查看头像
+achieve_task_data_error=成就任务数据异常
+
+# 数字+字母混合
+activity_2235_introduce=1、荒芜之王是沙漠中强大的元素领主，平时会在地图中随机游荡。\n2、荒芜之王难度较高，请领主们谨慎对待。\n3、攻击荒芜之王失败后，荒芜之王将会对集结发起者的城堡发起反击！
+activity_221_ui_1=奖励
+activity_collect_01=线索寻找
+
+# 三元表达式测试用key（新增）
+mobilization_dedicated_task=专属任务
+mobilization_alliance_task_title=公会任务
+
+# 包含换行符的翻译（测试多行文本显示）
+account_manage_tips_003=确定要切到新的服务器{0}吗？\n切换后，老的角色不会消失，可以随时切换到原来的服务器。
+activity_basezp_shuoming=1.转盘说明：花费1张转盘券,可启动1次转盘。\n2.转盘券：完成每日任务可以获得转盘券；活动相关礼包,可直接获得转盘券。\n3.每次启动转盘，必会获得1个兑换道具。\n4.转盘中获得的兑换道具可用于兑换商店。\n5.本次活动剩余的转盘券和兑换道具在活动结束后会保留。\n6.活动期间每日赠送1次免费转盘机会。
+
+# 通用按钮
+BTN_OK=确定
+BTN_CANCEL=取消
+BTN_SUBMIT=提交
+BTN_RESET=重置
+BTN_SAVE=保存
+BTN_DELETE=删除
+BTN_EDIT=编辑
+BTN_ADD=添加
+BTN_CLOSE=关闭
+BTN_CONFIRM=确认
+
+# 消息提示
+MSG_SUCCESS=操作成功
+MSG_FAILED=操作失败
+MSG_LOADING=加载中...
+MSG_NO_DATA=暂无数据
+MSG_NETWORK_ERROR=网络错误，请稍后重试
+MSG_PERMISSION_DENIED=权限不足
+MSG_INVALID_INPUT=输入无效
+MSG_SAVE_SUCCESS=保存成功
+MSG_DELETE_CONFIRM=确定要删除吗？
+
+# 用户相关
+USER_NAME=用户名
+USER_PASSWORD=密码
+USER_EMAIL=邮箱
+USER_PHONE=手机号
+USER_LOGIN=登录
+USER_LOGOUT=退出登录
+USER_REGISTER=注册
+USER_PROFILE=个人资料
+USER_SETTINGS=用户设置
+
+# 表单标签
+LABEL_TITLE=标题
+LABEL_CONTENT=内容
+LABEL_DESCRIPTION=描述
+LABEL_CATEGORY=分类
+LABEL_TAG=标签
+LABEL_STATUS=状态
+LABEL_DATE=日期
+LABEL_TIME=时间
+LABEL_AUTHOR=作者
+LABEL_PRICE=价格
+
+# 状态
+STATUS_ACTIVE=激活
+STATUS_INACTIVE=未激活
+STATUS_PENDING=待处理
+STATUS_APPROVED=已批准
+STATUS_REJECTED=已拒绝
+STATUS_DRAFT=草稿
+STATUS_PUBLISHED=已发布
+
+# 菜单项
+MENU_HOME=首页
+MENU_DASHBOARD=控制台
+MENU_PRODUCTS=产品
+MENU_ORDERS=订单
+MENU_USERS=用户管理
+MENU_SETTINGS=设置
+MENU_HELP=帮助
+MENU_ABOUT=关于
+
+# 错误消息
+ERROR_REQUIRED_FIELD=此字段为必填项
+ERROR_INVALID_EMAIL=邮箱格式不正确
+ERROR_PASSWORD_TOO_SHORT=密码长度至少8位
+ERROR_PASSWORD_MISMATCH=两次密码输入不一致
+ERROR_USER_NOT_FOUND=用户不存在
+ERROR_WRONG_PASSWORD=密码错误
+ERROR_SERVER_ERROR=服务器错误
+ERROR_TIMEOUT=请求超时
+
+# 游戏相关
+GAME_START=开始游戏
+GAME_PAUSE=暂停
+GAME_RESUME=继续
+GAME_RESTART=重新开始
+GAME_SCORE=分数
+GAME_LEVEL=关卡
+GAME_LIVES=生命
+GAME_GAME_OVER=游戏结束
+GAME_YOU_WIN=你赢了！
+GAME_HIGH_SCORE=最高分
+
+# 时间相关
+TIME_SECOND=秒
+TIME_MINUTE=分钟
+TIME_HOUR=小时
+TIME_DAY=天
+TIME_WEEK=周
+TIME_MONTH=月
+TIME_YEAR=年
+TIME_TODAY=今天
+TIME_YESTERDAY=昨天
+TIME_TOMORROW=明天
+
+# 数据操作
+DATA_LOAD=加载数据
+DATA_REFRESH=刷新
+DATA_EXPORT=导出
+DATA_IMPORT=导入
+DATA_SEARCH=搜索
+DATA_FILTER=筛选
+DATA_SORT=排序
+DATA_TOTAL=总计
+

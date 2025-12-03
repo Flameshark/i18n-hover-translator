@@ -1,0 +1,23 @@
+.vscode/**
+.vscode-test/**
+test/**
+node_modules/**
+.gitignore
+.yarnrc
+vsc-extension-quickstart.md
+**/jsconfig.json
+**/*.map
+**/.eslintrc.json
+
+# 测试文件和工作区
+test-workspace/**
+test-example.js
+
+# 开发专用文件
+启动真实项目调试.bat
+REAL_PROJECT_SETUP.md
+
+# 开发相关
+.eslintrc.json
+*.log
+*.vsix
