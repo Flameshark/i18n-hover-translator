@@ -276,6 +276,21 @@ Language.GetContent("unknown_key_123");
 - **推荐值**：3-5（快速查看最匹配的结果）
 - **较大值**：6-10（需要查看更多可能的匹配）
 
+### Hover提示框高度
+
+如果中文反查结果较多时出现滚动条，可以调整VS Code的Hover高度设置：
+
+```json
+{
+  "editor.hover.maxHeight": 600  // 默认300，推荐500-800
+}
+```
+
+**配置方法**：
+1. 打开设置（`Ctrl+,`）
+2. 搜索 `hover max height`
+3. 调整 **Editor › Hover: Max Height** 的值
+
 ## 🎮 支持的语言
 
 - JavaScript / TypeScript

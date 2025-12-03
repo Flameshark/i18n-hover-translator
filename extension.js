@@ -386,6 +386,66 @@ function provideTranslationHover(document, position) {
             
             // 🔑 强制模式：跳过函数匹配和key格式检查
             if (forceMode) {
+                // 先检查是否是中文字符串，如果是则进行反向查找
+                if (isChineseString(key)) {
+                    const matchedKeys = findKeysByValue(key);
+                    
+                    if (matchedKeys.length > 0) {
+                        // 找到匹配的key，显示可替换的选项
+                        const markdown = new vscode.MarkdownString();
+                        markdown.supportHtml = true;
+                        markdown.isTrusted = true;
+                        
+                        markdown.appendMarkdown(`**🔍 中文反向查找** （强制模式）\n\n`);
+                        if (matchedKeys.length > maxResults) {
+                            markdown.appendMarkdown(`**${key} 有${matchedKeys.length}个匹配的翻译 key(显示前${maxResults}个):** \n\n`);
+                        }
+                        else{
+                            markdown.appendMarkdown(`**${key} 有${matchedKeys.length}个匹配的翻译 key：**\n\n`);
+                        }
+                        
+                        // 获取配置的最大显示数量
+                        const maxResults = config.get('maxReverseResults', 5);
+                        const keysToShow = matchedKeys.slice(0, maxResults);
+                        
+                        for (let i = 0; i < keysToShow.length; i++) {
+                            const matchedKey = keysToShow[i];
+                            const matchedValue = translations.get(matchedKey);
+                            
+                            // 截断过长的翻译（超过50字符）
+                            let displayValue = matchedValue || '';
+                            if (displayValue.length > 50) {
+                                displayValue = displayValue.substring(0, 50) + '...';
+                            }
+                            // 转义特殊字符
+                            displayValue = displayValue
+                                .replace(/\\/g, '\\\\')
+                                .replace(/\n/g, ' ')
+                                .replace(/\r/g, '');
+                            
+                            // 创建可点击的命令链接
+                            const args = encodeURIComponent(JSON.stringify({
+                                document: document.uri.toString(),
+                                line: position.line,
+                                startChar: startChar,
+                                endChar: endChar,
+                                oldText: key,
+                                newText: matchedKey,
+                                quoteChar: beforeChar
+                            }));
+                            const commandUri = `command:i18nHover.replaceWithKey?${args}`;
+                            
+                            markdown.appendMarkdown(`${i + 1}. [\`${matchedKey}\`](${commandUri}) → *${displayValue}*\n`);
+                        }
+                        
+                        markdown.appendMarkdown(`\n---\n\n`);
+                        markdown.appendMarkdown(`💡 *点击 key 可快速替换当前中文字符串*`);
+                        
+                        return new vscode.Hover(markdown);
+                    }
+                }
+                
+                // 如果不是中文，则正常查找翻译
                 // 直接查找翻译
                 const translation = translations.get(key);
                 
@@ -527,12 +587,17 @@ function provideTranslationHover(document, position) {
                         markdown.isTrusted = true;
                         
                         markdown.appendMarkdown(`**🔍 中文反向查找**（在函数调用中）\n\n`);
-                        markdown.appendMarkdown(`**中文内容：** ${key}\n\n`);
-                        markdown.appendMarkdown(`**找到 ${matchedKeys.length} 个匹配的翻译 key：**\n\n`);
                         
                         // 获取配置的最大显示数量
                         const maxResults = config.get('maxReverseResults', 5);
                         const keysToShow = matchedKeys.slice(0, maxResults);
+                        
+                        if (matchedKeys.length > maxResults) {
+                            markdown.appendMarkdown(`**${key} 有${matchedKeys.length}个匹配的翻译 key(显示前${maxResults}个):** \n\n`);
+                        }
+                        else{
+                            markdown.appendMarkdown(`**${key} 有${matchedKeys.length}个匹配的翻译 key：**\n\n`);
+                        }
                         
                         for (let i = 0; i < keysToShow.length; i++) {
                             const matchedKey = keysToShow[i];
@@ -562,10 +627,6 @@ function provideTranslationHover(document, position) {
                             const commandUri = `command:i18nHover.replaceWithKey?${args}`;
                             
                             markdown.appendMarkdown(`${i + 1}. [\`${matchedKey}\`](${commandUri}) → *${displayValue}*\n`);
-                        }
-                        
-                        if (matchedKeys.length > maxResults) {
-                            markdown.appendMarkdown(`\n*还有 ${matchedKeys.length - maxResults} 个匹配项...*\n`);
                         }
                         
                         markdown.appendMarkdown(`\n---\n\n`);
