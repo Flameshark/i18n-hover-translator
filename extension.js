@@ -391,6 +391,9 @@ function provideTranslationHover(document, position) {
                     const matchedKeys = findKeysByValue(key);
                     
                     if (matchedKeys.length > 0) {
+                        // 获取配置的最大显示数量
+                        const maxResults = config.get('maxReverseResults', 5);
+                        
                         // 找到匹配的key，显示可替换的选项
                         const markdown = new vscode.MarkdownString();
                         markdown.supportHtml = true;
@@ -404,8 +407,6 @@ function provideTranslationHover(document, position) {
                             markdown.appendMarkdown(`**${key} 有${matchedKeys.length}个匹配的翻译 key：**\n\n`);
                         }
                         
-                        // 获取配置的最大显示数量
-                        const maxResults = config.get('maxReverseResults', 5);
                         const keysToShow = matchedKeys.slice(0, maxResults);
                         
                         for (let i = 0; i < keysToShow.length; i++) {
