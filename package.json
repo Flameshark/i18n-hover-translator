@@ -45,7 +45,7 @@
         "i18nHover.translationFilePath": {
           "type": "string",
           "default": "",
-          "description": "翻译文件的路径（格式：key=value，每行一个）。\n如果未配置，程序会自动搜索以下默认路径：\n  ① 工作区根目录/translations.txt\n  ② 工作区根目录/Library/EditorPerssitent/Locale/translation.txt"
+          "description": "翻译文件的路径（格式：key=value，每行一个）。\n如果未配置，程序会自动搜索以下默认路径：\n  ① 工作区根目录/Library/EditorPerssitent/Locale/translation.txt\n  ② 工作区根目录/translations.txt（保底）"
         },
         "i18nHover.keyPattern": {
           "type": "string",

@@ -233,8 +233,8 @@ Language.GetContent("unknown_key_123");
 ```
 
 **默认自动查找规则**（未配置时按顺序查找，使用第一个存在的文件）：
-1. `<工作区>/translations.txt`
-2. `<工作区>/Library/EditorPerssitent/Locale/translation.txt`
+1. `<工作区>/Library/EditorPerssitent/Locale/translation.txt`（默认首选）
+2. `<工作区>/translations.txt`（保底）
 
 ### Key 匹配规则
 

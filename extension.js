@@ -236,8 +236,8 @@ function loadTranslations() {
             
             // 定义多个默认查找路径
             const defaultPaths = [
-                path.join(workspaceRoot, 'translations.txt'),
-                path.join(workspaceRoot, 'Library', 'EditorPerssitent', 'Locale','translation.txt')
+                path.join(workspaceRoot, 'Library', 'EditorPerssitent', 'Locale','translation.txt'),
+                path.join(workspaceRoot, 'translations.txt')
             ];
             
             // 查找第一个存在的文件
